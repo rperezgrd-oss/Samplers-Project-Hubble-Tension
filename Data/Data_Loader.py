@@ -9,7 +9,7 @@ def load_data():
 
     with gzip.open('Pantheon+SH0ES_STAT+SYS.cov.gz', 'rt') as f:
         N = int(f.readline())
-        C = np.fromstring(f.read(), sep=' ').reshape(N, N)
+        C = np.fromstring(f.read(), sep = ' ').reshape(N, N)
 
     inv_C = np.linalg.inv(C)
     return z, mu_obs, inv_C
