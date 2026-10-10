@@ -7,6 +7,7 @@ from matplotlib.lines import Line2D
 from scipy.stats import gaussian_kde
 from matplotlib.patches import Rectangle
 from burn_in_checks import estimate_global_burnin
+from chain_data_loader import load_chains
 
 
 CMAP = plt.get_cmap('inferno')
