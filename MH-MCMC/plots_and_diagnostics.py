@@ -73,7 +73,7 @@ def plot_parameters_multiple(all_H0, all_omega_m, burn_in = None, n_show = 1500,
 
     for ax in (a_H0, a_om):
         if burn_in is not None:
-            _shade_burnin(ax, burn_in)
+            add_shade_burnin(ax, burn_in)
         ax.grid(which = 'major', color = '0.9', lw = 0.6)
         ax.set_axisbelow(True)
     a_H0.tick_params(which = 'both', labelbottom = False)
