@@ -15,4 +15,6 @@ def chain_runs_MH_MCMC(chains, steps, epsilon, seed = 47):
         np.savetxt(f"MH_MCMC_chain_{chain}.txt", run)
 
 z, mu_obs, inv_C = load_data()
-chain_runs_MH_MCMC(5, 5000, 0.015)
+chain_runs_MH_MCMC(5, 5000, 0.0142)
+
+
