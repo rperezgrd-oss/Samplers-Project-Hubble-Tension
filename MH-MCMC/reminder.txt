@@ -1,0 +1,1 @@
+remove simpson int from cosmological fomulas python file, commment heavily the epsilon tuning
