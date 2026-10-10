@@ -92,6 +92,6 @@ def plot_parameters_multiple(all_H0, all_omega_m, burn_in = None, n_show = 1500,
     plt.show()
 
 df = load_chains(5, "MH_MCMC")
-all_log_likelihoods = df[:, 3]
+all_log_likelihoods = df[:, 2]
 max_burn_in = plot_logL_multiple(all_log_likelihoods)
 plot_parameters_multiple(all_H0, all_omega_m, burn_in=max_burn_in)
