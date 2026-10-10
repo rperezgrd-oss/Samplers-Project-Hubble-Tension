@@ -13,7 +13,7 @@ def expansion_rate(z, omega_m):
     return np.sqrt(omega_m * ((1 + z)**3 - 1) + 1)
 
 
-def luminosity_distance(z, H0, omega_m, c = 299792458):
+def luminosity_distance(z, H0, omega_m, c = 299792.458):
 
     #The Luminosity Distance is defined according to the LCDM Model as follows:
 
