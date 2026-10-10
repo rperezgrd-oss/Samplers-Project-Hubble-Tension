@@ -1,11 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import pandas as pd
-import colorsys
-from matplotlib.gridspec import GridSpec
-from matplotlib.lines import Line2D
-from scipy.stats import gaussian_kde
-from matplotlib.patches import Rectangle
 from burn_in_checks import estimate_global_burnin
 from chain_data_loader import load_chains
 
@@ -33,7 +27,7 @@ def add_shade_burnin(ax, burn_in):
     ax.axvline(burn_in, color = '0.2', lw = 1.0, zorder = 3)
 
 
-def plot_logL_multiple(all_log_likelihoods, n_show = 1500, linthresh = 100, ylim = (-2e4, -400), fname = 'logL_chains.pdf'):
+def plot_logL_multiple(all_log_likelihoods, n_show = 1000, linthresh = 100, ylim = (-2e4, -400), fname = 'logL_chains.pdf'):
     max_burn_in, median_burn_in = estimate_global_burnin(all_log_likelihoods)
     colors = chain_colors(len(all_log_likelihoods))
 
@@ -64,10 +58,10 @@ def plot_logL_multiple(all_log_likelihoods, n_show = 1500, linthresh = 100, ylim
     return max_burn_in
 
 
-def plot_parameters_multiple(all_H0, all_omega_m, burn_in = None, n_show = 1500, fname = 'Parameter_chains.pdf'):
+def plot_parameters_multiple(all_H0, all_omega_m, burn_in = None, n_show = 1000, fname = 'Parameter_chains.pdf'):
     colors = chain_colors(len(all_H0))
 
-    fig, (a_H0, a_om) = plt.subplots(2, 1, figsize = (6.6, 4.4), sharex = True, gridspec_kw = dict(hspace = 0))
+    fig, (a_H0, a_om) = plt.subplots(2, 1, figsize = (6.6, 3.6), sharex = True, gridspec_kw = dict(hspace = 0))
     for i, (c, H0, om) in enumerate(zip(colors, all_H0, all_omega_m)):
         a_H0.plot(H0[:n_show], color = c, lw = 0.8, alpha = 0.9, label = f'Chain {i + 1}')
         a_om.plot(om[:n_show], color = c, lw = 0.8, alpha = 0.9)
@@ -90,8 +84,3 @@ def plot_parameters_multiple(all_H0, all_omega_m, burn_in = None, n_show = 1500,
                       textcoords = 'offset points', fontsize = 8, color = '0.2')
     fig.savefig(fname)
     plt.show()
-
-df = load_chains(5, "MH_MCMC")
-all_log_likelihoods = df[:, 2]
-max_burn_in = plot_logL_multiple(all_log_likelihoods)
-plot_parameters_multiple(all_H0, all_omega_m, burn_in=max_burn_in)
