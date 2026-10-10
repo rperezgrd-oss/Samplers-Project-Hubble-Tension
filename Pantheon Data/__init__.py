@@ -1,3 +1,3 @@
-from .Data_loader import load_data
+from .Data_Loader import load_data
 
 __all__ = ["load_data"]
