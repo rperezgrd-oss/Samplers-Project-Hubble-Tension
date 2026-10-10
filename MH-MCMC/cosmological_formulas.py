@@ -3,29 +3,25 @@ from scipy.integrate import quad
 
 def expansion_rate(z, omega_m):
 
-    """
-    The Expansion Rate is defined according to the LCDM Model as follows:
+    #The Expansion Rate is defined according to the LCDM Model as follows:
 
-    E(z) = \sqrt{\Omega_m(1 + z)^3 +(1 - \Omega_m)}
+    #E(z) = \sqrt{\Omega_m(1 + z)^3 +(1 - \Omega_m)}
 
-    - omega_m: Matter Density Parameter
-    - z: Redshift
-    """
+    #- omega_m: Matter Density Parameter
+    #- z: Redshift
 
     return np.sqrt(omega_m * ((1 + z)**3 - 1) + 1)
 
 
-def luminosity_distance(z, H0, omega_m, c = 3e5): #Needs to be more precise c
+def luminosity_distance(z, H0, omega_m, c = 299792458):
 
-    """
-    The Luminosity Distance is defined according to the LCDM Model as follows:
+    #The Luminosity Distance is defined according to the LCDM Model as follows:
 
-    dL(z) = \frac{c(1 + z')}{H0} \int^{z'}_{0} \frac{1}{E(z')}dz'
+    #dL(z) = \frac{c(1 + z')}{H0} \int^{z'}_{0} \frac{1}{E(z')}dz'
 
-    - H0: Hubble Constant
-    - z': Redshift
-    - c: Speed of Light
-    """
+    #- H0: Hubble Constant
+    #- z': Redshift
+    #- c: Speed of Light
 
     dL_z = np.ones(len(z))
     coefficient = (c / H0) * (1 + np.array(z))
@@ -37,15 +33,13 @@ def luminosity_distance(z, H0, omega_m, c = 3e5): #Needs to be more precise c
 
 def theoretical_distance_modulus(z, H0, omega_m):
 
-    """
-    The Luminosity Distance is defined according to the LCDM Model as follows:
+    #The Luminosity Distance is defined according to the LCDM Model as follows:
 
-    dL(z) = \frac{c(1 + z')}{H0} \int^{z'}_{0} \frac{1}{E(z')}dz'
+    #dL(z) = \frac{c(1 + z')}{H0} \int^{z'}_{0} \frac{1}{E(z')}dz'
 
-    - H0: Hubble Constant
-    - z': Redshift
-    - c: Speed of Light
-    """
+    #- H0: Hubble Constant
+    #- z': Redshift
+    #- c: Speed of Light
         
     return 5 * np.log10(luminosity_distance(z, H0, omega_m)) + 25
 
